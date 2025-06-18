@@ -18,7 +18,7 @@ def create_agents(chroma_tool, llm):
     legal_assistant_agent = Agent(
         role="Legal Assistant Agent",
         goal="Generate responses for the {query} based on retrieved documents only",
-        backstory="You are a lawyer assistant at LawGlance. You create informative responses using the retriever's results. "
+        backstory="You are a lawyer assistant. You create informative responses using the retriever's results. "
                   "If those aren't enough, you may consult the web search tool.",
         verbose=True,
         memory=True,

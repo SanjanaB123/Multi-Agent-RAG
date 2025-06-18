@@ -5,13 +5,13 @@ from langchain.document_loaders import PyMuPDFLoader
 from tools.chroma_tool import ChromaRetrieverTool
 from agents import create_agents
 from tasks import get_tasks
-
 from langchain_openai import ChatOpenAI
 from config import OPENAI_API_KEY
 from openai import OpenAI
 from crewai import Crew
 
 client = OpenAI(api_key=OPENAI_API_KEY)
+
 
 def ingest_documents(pdf_path, persist_dir="./vectorstore/chroma_db"):
     loader = PyMuPDFLoader(pdf_path)
@@ -33,7 +33,6 @@ def main():
     print("[INFO] Ingesting documents...")
     vectorstore = ingest_documents(pdf_path)
 
-    # Get retriever
     retriever = vectorstore.as_retriever()
 
     # Create the tool using retriever
